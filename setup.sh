@@ -6,10 +6,18 @@
 # desde esta plantilla:
 #   1. Instala y activa los Git Hooks locales del Definition of Done (DoD).
 #   2. Asiste en la revisión de la Constitución (constitution.md).
-#   3. Orienta y prepara el arranque del primer ciclo ($speckit-specify).
+#   3. Orienta al usuario a usar el comando agéntico $speckit-init en el chat.
 # ==============================================================================
 
 set -e
+
+# Modo no interactivo flag
+NON_INTERACTIVE=false
+for arg in "$@"; do
+  if [ "$arg" == "--non-interactive" ] || [ "$arg" == "-y" ]; then
+    NON_INTERACTIVE=true
+  fi
+done
 
 # Colores de salida
 RED='\033[0;31m'
@@ -91,45 +99,38 @@ chmod +x .git/hooks/pre-push
 echo -e "  ${GREEN}✓${NC} Git hook '${BOLD}.git/hooks/pre-push${NC}' instalado y activado."
 
 # ------------------------------------------------------------------------------
-# 3. REVISIÓN DE LA CONSTITUCIÓN DEL PROYECTO
+# 3. ALERTA DE CONSTITUCIÓN Y TIEMPO AGENTE-HUMANO
 # ------------------------------------------------------------------------------
-echo -e "\n${BLUE}▶ [Paso 3/4] Revisión de la Constitución de Ingeniería...${NC}"
+echo -e "\n${BLUE}▶ [Paso 3/4] Estado de la Constitución de Ingeniería...${NC}"
 
 CONST_PATH=".specify/memory/constitution.md"
 if [ -f "$CONST_PATH" ]; then
-  echo -e "  ${GREEN}✓${NC} Archivo de Constitución detectado en: ${CYAN}${CONST_PATH}${NC}"
-  echo -e "  ${YELLOW}Principios activos innegociables:${NC}"
-  grep -E "^### " "$CONST_PATH" | sed 's/### /    • /' || true
-  echo -e "\n  ${YELLOW}💡 Tip:${NC} Si tu aplicación requiere una tecnología o regla especial (ej. 'Frontend en Next.js 15' o 'Latencia < 100ms'), edita este archivo antes de planificar."
-else
-  echo -e "  ${YELLOW}⚠️ No se encontró constitution.md. Creando plantilla base...${NC}"
-  mkdir -p .specify/memory
+  echo -e "  ${YELLOW}⚠️  ATENCIÓN:${NC} La Constitución actual en ${CYAN}${CONST_PATH}${NC} es una plantilla genérica."
+  echo -e "  ${BOLD}El agente aún no sabe qué aplicación vas a construir.${NC}"
+  echo -e "  En esta fase es ${BOLD}crítico invertir tiempo entre el humano y el agente${NC} para definir:"
+  echo -e "    1. El propósito y dominio real de tu software."
+  echo -e "    2. El stack tecnológico exacto (FastAPI, Next.js, Go, etc.)."
+  echo -e "    3. Los estándares no negociables de latencia, seguridad y cobertura."
 fi
 
 # ------------------------------------------------------------------------------
-# 4. ORIENTACIÓN PARA EL PRIMER CICLO ($speckit-specify)
+# 4. PUNTO DE ENTRADA CONVERSACIONAL EN EL CHAT ($speckit-init)
 # ------------------------------------------------------------------------------
-echo -e "\n${BLUE}▶ [Paso 4/4] ¡Listo para arrancar el desarrollo autónomo!${NC}\n"
+echo -e "\n${BLUE}▶ [Paso 4/4] Cómo arrancar desde el chat de tu Agente de IA...${NC}\n"
 
-echo -e "${BOLD}El ciclo de desarrollo en 4 pasos se ejecuta de la siguiente manera:${NC}"
-echo -e "  ${GREEN}1. Especificación Inicial:${NC}  \$speckit-specify <descripción de tu app o feature>"
-echo -e "  ${GREEN}2. Clarificación de Dudas:${NC}  \$speckit-clarify (responde ≤5 preguntas interactivas)"
-echo -e "  ${GREEN}3. Diseño y Arquitectura:${NC}   \$speckit-plan <stack técnico deseado>"
-echo -e "  ${GREEN}4. Tareas y Auditoría:${NC}      \$speckit-checklist ➜ \$speckit-tasks ➜ \$speckit-analyze"
-echo -e "  ${GREEN}5. Construcción TDD:${NC}        (Escribir pruebas en rojo) ➜ \$speckit-implement ➜ \$speckit-converge"
-echo -e "  ${GREEN}6. Verificación E2E:${NC}        Prueba en navegador real ➜ Pull Request a 'main'"
+echo -e "💬 ${BOLD}Para realizar la entrevista de descubrimiento y adaptar la Constitución a tu app:${NC}"
+echo -e "   Escribe en el chat de tu agente: ${GREEN}${BOLD}\$speckit-init${NC}\n"
+
+echo -e "El agente ejecutará la habilidad ${CYAN}.agents/skills/speckit-init/SKILL.md${NC}:"
+echo -e "  • Te formulará 4 preguntas estratégicas sobre tu proyecto."
+echo -e "  • Personalizará ${BOLD}constitution.md${NC} con tus reglas y stack específicos."
+echo -e "  • Creará tu primer ${BOLD}ADR-001${NC} documentando la decisión técnica."
+echo -e "  • Te dejará listo para lanzar ${BOLD}\$speckit-specify${NC} con tu primera funcionalidad."
+
+if [ "$NON_INTERACTIVE" = true ]; then
+  echo -e "\n${GREEN}✅ Configuración no interactiva finalizada.${NC}\n"
+  exit 0
+fi
 
 echo -e "\n${CYAN}--------------------------------------------------------------------${NC}"
-read -r -p "👉 ¿Deseas iniciar tu primera especificación ahora? (Ingresa la descripción o presiona Enter para salir): " FIRST_FEATURE
-
-if [ -n "$FIRST_FEATURE" ]; then
-  echo -e "\n${GREEN}🚀 Lanzando: \$speckit-specify \"$FIRST_FEATURE\"...${NC}\n"
-  if [ -f ".specify/scripts/bash/create-new-feature.sh" ]; then
-    .specify/scripts/bash/create-new-feature.sh "$FIRST_FEATURE"
-  else
-    echo -e "${YELLOW}Ejecuta directamente con tu agente:${NC} \$speckit-specify $FIRST_FEATURE"
-  fi
-else
-  echo -e "\n${GREEN}✅ Repositorio 100% configurado y protegido.${NC}"
-  echo -e "Cuando estés listo, invoca a tu agente con: ${BOLD}\$speckit-specify <descripción>${NC}\n"
-fi
+echo -e "${GREEN}✅ Compuertas locales listas.${NC} Pasa al chat de tu agente y escribe: ${BOLD}\$speckit-init${NC}\n"

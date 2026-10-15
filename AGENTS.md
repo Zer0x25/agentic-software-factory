@@ -8,6 +8,7 @@ Este repositorio opera bajo el estándar **Spec-Driven Development (SDD)** con *
 - Toda decisión técnica relevante debe registrarse como ADR en `history/adr/`.
 
 ## 2. Flujo Operativo Obligatorio
+0. **Inicialización y Onboarding (Nuevas Apps)**: Invocación de `$speckit-init` para realizar la entrevista de descubrimiento entre humano y agente, activar los hooks locales y adaptar la Constitución a la nueva aplicación.
 1. **Concepción**: Invocación de `$speckit-specify` para crear la rama y la especificación funcional.
 2. **Entrevista de Clarificación**: Invocación de `$speckit-clarify` (máximo 5 preguntas de opción múltiple antes de planificar).
 3. **Diseño y Arquitectura**: Invocación de `$speckit-plan`, verificación de `Constitution Check` y justificación en `Complexity Tracking` si hay excepciones.
