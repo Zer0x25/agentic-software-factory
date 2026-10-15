@@ -88,7 +88,23 @@ $$\text{Agente Autónomo} = \text{Modelo Fundacional} + \text{Harness (Arnés)}$
 
 ---
 
-## 🛠️ Requisitos e Instalación
+## ⚡ Inicio Rápido para Nuevas Aplicaciones
+
+Para desarrollar un nuevo software o aplicación utilizando este repositorio como plantilla:
+
+```bash
+# 1. Crear tu nuevo repositorio a partir de la plantilla y clonarlo en tu PC
+gh repo create mi-nueva-app --template Zer0x25/agentic-software-factory --private --clone
+cd mi-nueva-app
+
+# 2. Ejecutar el asistente de inicialización
+# (Instala los git hooks locales, muestra los principios de la Constitución y te asiste en el primer $speckit-specify)
+./setup.sh
+```
+
+---
+
+## 🛠️ Requisitos del Entorno
 
 ### Requisitos Locales
 - **Linux / macOS / Windows (WSL)**
@@ -97,12 +113,9 @@ $$\text{Agente Autónomo} = \text{Modelo Fundacional} + \text{Harness (Arnés)}$
 - Git & [GitHub CLI (`gh`)](https://cli.github.com/)
 
 ```bash
-# Instalar uv y specify-cli
+# Instalar uv y specify-cli (si no los tienes instalados)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-
-# Inicializar un nuevo proyecto con Spec-Kit
-specify init mi-proyecto --integration codex --extension git
 ```
 
 ---
