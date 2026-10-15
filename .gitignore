@@ -1,0 +1,34 @@
+# Dependencias y entornos
+node_modules/
+.pnpm-store/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Cobertura y testing
+coverage/
+.coverage
+.pytest_cache/
+.nyc_output/
+
+# Secretos y credenciales locales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.agents/**/credentials
+.agents/**/tokens
+
+# Builds y artefactos efímeros
+dist/
+build/
+*.log
+.DS_Store
+
+# Spec Kit per-machine state
+.specify/feature.json
+.specify/extensions/*/local-config.yml
+.specify/integrations/packages/
+.specify/integrations/packages.json
