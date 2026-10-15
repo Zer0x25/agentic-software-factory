@@ -20,3 +20,6 @@ Este repositorio opera bajo el estándar **Spec-Driven Development (SDD)** con *
 - Pruebas y Cobertura: Debe mantenerse >= 85%.
 - Linters y Tipos: Exit code 0 en todos los chequeos.
 - Comandos destructivos prohibidos: `rm -rf`, `git push --force`, `--no-verify`.
+
+## 4. Bucle de Mejora Continua para la Plantilla Maestra
+- Si durante el desarrollo observas fricciones del arnés, fallos en hooks o mejoras aplicables al template maestro, invoca `$speckit-feedback "<descripción>"` para documentarlo en `feedback/TEMPLATE_IMPROVEMENTS.md`.

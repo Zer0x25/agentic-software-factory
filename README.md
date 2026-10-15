@@ -29,6 +29,7 @@ $$\text{Agente Autónomo} = \text{Modelo Fundacional} + \text{Harness (Arnés)}$
 
 ```text
 ├── .agents/skills/              # Skills de Spec-Kit instaladas para agentes de codificación
+│   ├── speckit-init/            # Inicialización y entrevista de descubrimiento constitucional
 │   ├── speckit-specify/         # Generación de especificación funcional (spec.md)
 │   ├── speckit-clarify/         # Entrevista estructurada de reducción de ambigüedad
 │   ├── speckit-plan/            # Plan técnico, contratos y modelo de datos
@@ -36,12 +37,16 @@ $$\text{Agente Autónomo} = \text{Modelo Fundacional} + \text{Harness (Arnés)}$
 │   ├── speckit-tasks/           # Desglose en tareas dependientes
 │   ├── speckit-analyze/         # Auditoría cruzada en solo lectura
 │   ├── speckit-implement/       # Construcción TDD por etapas acotadas
-│   └── speckit-converge/        # Bucle de convergencia append-only
+│   ├── speckit-converge/        # Bucle de convergencia append-only
+│   └── speckit-feedback/        # Captura de fricciones y mejoras para la plantilla
 ├── .github/workflows/           # Tuberías CI/CD de verificación de DoD y StepSecurity
 ├── .specify/                    # Motor de Spec-Kit
 │   ├── memory/                  # Constitución inmutable (constitution.md)
 │   ├── templates/               # Moldes personalizables de especificaciones y planes
 │   └── scripts/                 # Automatizaciones locales en Bash
+├── feedback/                    # Canal de retroalimentación hacia el template maestro
+│   ├── README.md                # Guía de portabilidad de mejoras
+│   └── TEMPLATE_IMPROVEMENTS.md # Bitácora estructurada de fricciones y parches
 ├── history/
 │   ├── adr/                     # Registros de Decisiones de Arquitectura (MADR)
 │   └── prompts/                 # Pista de auditoría forense de prompts (PHRs)
@@ -101,6 +106,18 @@ cd mi-nueva-app
 # (Instala los git hooks locales, muestra los principios de la Constitución y te asiste en el primer $speckit-specify)
 ./setup.sh
 ```
+
+---
+
+## 🔄 Bucle de Retroalimentación y Mejora Continua de la Plantilla
+
+Si durante el desarrollo de una aplicación encuentras fricciones, inconsistencias del arnés o ideas para mejorar la plantilla maestra, no las dejes en el olvido. Puedes registrarlas directamente en el chat con tu agente:
+
+```bash
+$speckit-feedback "Descripción del problema, hook rígido o mejora deseada para el template"
+```
+
+El agente documentará automáticamente el hallazgo y la propuesta de parche en [`feedback/TEMPLATE_IMPROVEMENTS.md`](feedback/TEMPLATE_IMPROVEMENTS.md), permitiéndote reportarlo como Issue o Pull Request hacia [Zer0x25/agentic-software-factory](https://github.com/Zer0x25/agentic-software-factory).
 
 ---
 
