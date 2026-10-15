@@ -60,26 +60,32 @@ $$\text{Agente Autónomo} = \text{Modelo Fundacional} + \text{Harness (Arnés)}$
 ## 🚀 Flujo Operativo en 4 Fases
 
 ```text
-[Humano: Intención] 
+[Humano + Agente: Onboarding y Constitución Inicial]
         │
         ▼
-1. /speckit.specify  ──► Crea rama 'specs/001-feature/spec.md'
+0. $speckit-init     ──► Entrevista de descubrimiento, instala hooks y adapta constitution.md
         │
         ▼
-2. /speckit.clarify  ──► Entrevista interactiva (≤ 5 preguntas de opción múltiple)
+[Humano: Intención Funcional] 
         │
         ▼
-3. /speckit.plan     ──► Genera 'plan.md', contratos y ADRs en 'history/adr/'
+1. $speckit-specify  ──► Crea rama 'specs/001-feature/spec.md'
         │
         ▼
-4. /speckit.analyze  ──► Auditoría de consistencia en SOLO LECTURA (bloquea si hay fallos)
+2. $speckit-clarify  ──► Entrevista interactiva (≤ 5 preguntas de opción múltiple)
+        │
+        ▼
+3. $speckit-plan     ──► Genera 'plan.md', contratos y ADRs en 'history/adr/'
+        │
+        ▼
+4. $speckit-analyze  ──► Auditoría de consistencia en SOLO LECTURA (bloquea si hay fallos)
         │
         ▼
 [0% Humano: Construcción Autónoma]
         │
         ├─► Agente TDD Red: Redacta pruebas que fallan obligatoriamente
-        ├─► /speckit.implement: Codifica en Verde en fases acotadas
-        └─► /speckit.converge: Auditoría append-only hasta dictamen ✅ Converged
+        ├─► $speckit-implement: Codifica en Verde en fases acotadas
+        └─► $speckit-converge: Auditoría append-only hasta dictamen ✅ Converged
         │
         ▼
 5. Verificación E2E  ──► Validación en navegador real (Playwright MCP / Shiplight)
@@ -101,11 +107,22 @@ Para desarrollar un nuevo software o aplicación utilizando este repositorio com
 # 1. Crear tu nuevo repositorio a partir de la plantilla y clonarlo en tu PC
 gh repo create mi-nueva-app --template Zer0x25/agentic-software-factory --private --clone
 cd mi-nueva-app
-
-# 2. Ejecutar el asistente de inicialización
-# (Instala los git hooks locales, muestra los principios de la Constitución y te asiste en el primer $speckit-specify)
-./setup.sh
 ```
+
+### 2. Arrancar el Onboarding (Elige una opción):
+
+* **Opción A (Desde el Chat del Agente - Recomendada)**:  
+  Abre el chat con tu agente y escribe:
+  ```bash
+  $speckit-init
+  ```
+  *El agente configurará los hooks locales automáticamente, te entrevistará sobre el dominio y stack de tu nueva app, y adaptará la Constitución en vivo.*
+
+* **Opción B (Desde la Terminal)**:  
+  Ejecuta el asistente interactivo:
+  ```bash
+  ./setup.sh
+  ```
 
 ---
 
